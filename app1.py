@@ -13,7 +13,7 @@ user_item_matrix = df.pivot_table(index='user_id', columns='item_id', values='ra
 item_similarity = cosine_similarity(user_item_matrix.T)
 item_similarity_df = pd.DataFrame(item_similarity, index=user_item_matrix.columns, columns=user_item_matrix.columns)
 
-# Recommendation function
+# Added recommendation function
 def recommend_items(user_id, top_n=3):
     user_ratings = user_item_matrix.loc[user_id]
     liked_items = user_ratings[user_ratings > 3].index.tolist()
